@@ -16,3 +16,14 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.btn {
+  width: 70px;
+  height: 30px;
+  border-radius: 30%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* not-allowed */
+/* background-color: rgba(222, 70, 80, 0.884); */
