@@ -40,7 +40,7 @@ function onStartBtnClick() {
 };
 
 function countdown() {
-  currentDate = new Date(); 
+  const currentDate = new Date(); 
   dateDifference = selectedDate - currentDate;
   // console.log(currentDate, selectedDate);
   if (dateDifference > 0) {
