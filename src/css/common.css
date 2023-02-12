@@ -25,5 +25,34 @@ img {
   cursor: pointer;
 }
 
-/* not-allowed */
-/* background-color: rgba(222, 70, 80, 0.884); */
+.start-btn {
+  width: 70px;
+  height: 30px;
+  color: blue;
+  background-color: rgb(209, 209, 34);
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.disabled-btn {
+  cursor: not-allowed;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.label {
+  font-size: 20px;
+}
