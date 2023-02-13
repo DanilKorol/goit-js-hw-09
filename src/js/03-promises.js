@@ -12,11 +12,11 @@ function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve) {
-        resolve({ position, delay })
+        resolve({ position, delay });
       } else {
-        reject({ position, delay })
+        reject({ position, delay });
       }
-    }, delay)
+    }, delay);
   });
 }
 
@@ -32,15 +32,15 @@ function onBtnClick(event) {
   if (delay < 0 || step < 0 || amount <= 0) {
     Notify.warning('incorrect input');
   } else {
-   for (let i = 1; i <= amount; i += 1) {
-    createPromise(i, delay)
-  .then(({ position, delay }) => {
-    Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-  })
-  .catch(({ position, delay }) => {
-    Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-  });
-    delay += step;
-  } 
+    for (let i = 1; i <= amount; i += 1) {
+      createPromise(i, delay)
+        .then(({ position, delay }) => {
+          Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        })
+        .catch(({ position, delay }) => {
+          Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+        });
+      delay += step;
+    }
   }
 }

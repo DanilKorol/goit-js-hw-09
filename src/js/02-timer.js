@@ -1,14 +1,14 @@
-import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.min.css";
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
-    calendarDate: document.querySelector('#datetime-picker'),
-    startBtn: document.querySelector('button[data-start]'),
-    days: document.querySelector('span[data-days]'),
-    hours: document.querySelector('span[data-hours]'),
-    minutes: document.querySelector('span[data-minutes]'),
-    seconds: document.querySelector('span[data-seconds]'),
+  calendarDate: document.querySelector('#datetime-picker'),
+  startBtn: document.querySelector('button[data-start]'),
+  days: document.querySelector('span[data-days]'),
+  hours: document.querySelector('span[data-hours]'),
+  minutes: document.querySelector('span[data-minutes]'),
+  seconds: document.querySelector('span[data-seconds]'),
 };
 
 let intervalId = null;
@@ -16,7 +16,7 @@ let dateDifference = null;
 let selectedDate = null;
 
 refs.startBtn.setAttribute('disabled', true);
-refs.startBtn.classList.add('disabled-btn')
+refs.startBtn.classList.add('disabled-btn');
 refs.startBtn.addEventListener('click', onStartBtnClick);
 
 // function onStartBtnClick() {
@@ -37,15 +37,15 @@ refs.startBtn.addEventListener('click', onStartBtnClick);
 function onStartBtnClick() {
   Notify.info('The countdown has begun');
   intervalId = setInterval(countdown, 1000);
-};
+}
 
 function countdown() {
-  const currentDate = new Date(); 
+  const currentDate = new Date();
   dateDifference = selectedDate - currentDate;
   // console.log(currentDate, selectedDate);
   if (dateDifference > 0) {
     const { days, hours, minutes, seconds } = convertMs(dateDifference);
-    
+
     refs.days.innerHTML = `${days}`;
     refs.hours.innerHTML = `${hours}`;
     refs.minutes.innerHTML = `${minutes}`;
@@ -54,8 +54,7 @@ function countdown() {
     clearInterval(intervalId);
     Notify.warning('the countdown is over');
   }
-};
-
+}
 
 const options = {
   enableTime: true,
@@ -69,8 +68,8 @@ const options = {
     if (selectedDate <= currentDate) {
       // window.alert('Please choose a date in the future');
       Notify.failure('Please choose a date in the future');
-      refs.startBtn.classList.remove('start-btn')
-      refs.startBtn.classList.add('disabled-btn')
+      refs.startBtn.classList.remove('start-btn');
+      refs.startBtn.classList.add('disabled-btn');
     } else {
       Notify.success('the date is successfully selected');
       refs.startBtn.classList.remove('disabled-btn');
@@ -80,7 +79,7 @@ const options = {
   },
 };
 
-flatpickr(refs.calendarDate, options)
+flatpickr(refs.calendarDate, options);
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -96,7 +95,9 @@ function convertMs(ms) {
   // Remaining minutes
   const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
   // Remaining seconds
-  const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
+  const seconds = addLeadingZero(
+    Math.floor((((ms % day) % hour) % minute) / second)
+  );
 
   return { days, hours, minutes, seconds };
 }
